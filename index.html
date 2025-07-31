@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechBit</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #1f1f1f;
+      color: #e0e0e0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #121212;
+    }
+    header img {
+      height: 100px;
+    }
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+    nav a {
+      color: #00bcd4;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #00bcd4;
+    }
+    .scrolling-numbers {
+      font-size: 24px;
+      color: #ff9800;
+      animation: scroll 5s linear infinite;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    @keyframes scroll {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+    footer {
+      background-color: #121212;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons a {
+      color: #ccc;
+      margin: 0 10px;
+      font-size: 24px;
+      text-decoration: none;
+    }
+    .news-feed a {
+      display: block;
+      color: #ccc;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+    .news-feed a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/logo.jpg" alt="TechBit Logo" />
+    <h1>TechBit</h1>
+    <p>IT Infrastructure, Cloud, Networking, Microservices, and Development Solutions</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#services">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="#news">News Feed</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>☁️ Cloud Infrastructure Deployment</li>
+      <li>🖧 Networking & Secure Architecture</li>
+      <li>📦 Containerized Microservices with Kubernetes</li>
+      <li>🛠️ DevOps CI/CD Pipelines</li>
+      <li>🌐 Low-cost Web & App Development</li>
+      <li>🔒 Security & Monitoring Solutions</li>
+    </ul>
+  </section>
+
+  <section class="section" id="blog">
+    <h2>From the Blog</h2>
+    <div class="scrolling-numbers">🧠 Latest Trends · 🚀 AI-Driven DevOps · ☁️ Cloud Native Tech · 🛡️ Security Best Practices</div>
+    <p>Explore more on our <a href="blog.html">dedicated blog page</a>.</p>
+  </section>
+
+  <section class="section news-feed" id="news">
+    <h2>📢 News Feed</h2>
+    <a href="https://techcrunch.com/" target="_blank">🚀 TechCrunch: Latest Tech News</a>
+    <a href="https://thenewstack.io/" target="_blank">🧱 The New Stack: DevOps & Microservices</a>
+    <a href="https://www.zdnet.com/" target="_blank">🖥️ ZDNet: Cloud & IT Strategy</a>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>📞 Contact Us</h2>
+    <p>Email: <a href="mailto:info@techbit.net.bd">info@techbit.net.bd</a></p>
+    <p>Phone: <a href="tel:+8801700000000">+880 1700-000000</a></p>
+    <div class="social-icons">
+      <a href="https://facebook.com/techbit" target="_blank">🌐 Facebook</a>
+      <a href="https://linkedin.com/company/techbit" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/techbit" target="_blank">🐙 GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TechBit. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
