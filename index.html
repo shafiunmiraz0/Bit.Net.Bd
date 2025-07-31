@@ -1,200 +1,1294 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TechBit | Empowering Infrastructure</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechBit | Enterprise IT Solutions & Digital Transformation</title>
+  <meta name="description" content="TechBit provides cutting-edge IT infrastructure, cloud solutions, and DevOps services for enterprises">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success: #10b981;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    [data-theme="light"] {
+      --dark: #f8fafc;
+      --dark-light: #e2e8f0;
+      --light: #0f172a;
+      --gray: #94a3b8;
+      --gray-light: #1e293b;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #1e1e2f;
-      color: #e3e3e3;
+      background-color: var(--dark);
+      color: var(--light);
       line-height: 1.6;
+      transition: var(--transition);
     }
+
+    /* Header & Navigation */
     header {
-      background-color: #12121c;
-      text-align: center;
-      padding: 30px 20px;
-      border-bottom: 2px solid #2a2a40;
+      background-color: var(--dark-light);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    header img {
-      height: 80px;
-      margin-bottom: 15px;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
-    header h1 {
-      font-size: 2.2rem;
-      color: #00bcd4;
+
+    .logo-container img {
+      height: 50px;
+      transition: var(--transition);
     }
-    header p {
-      color: #aaa;
-      font-size: 1rem;
+
+    .logo-text h1 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
     }
+
+    .logo-text p {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
     nav {
-      margin-top: 15px;
+      display: flex;
+      align-items: center;
     }
-    nav a {
-      color: #00bcd4;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    nav a:hover {
-      color: #26c6da;
-      border-bottom: 2px solid #26c6da;
-    }
-    .section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    .section h2 {
-      font-size: 1.8rem;
-      color: #00bcd4;
-      margin-bottom: 20px;
-      border-left: 5px solid #00bcd4;
-      padding-left: 15px;
-    }
-    ul {
+
+    .nav-links {
+      display: flex;
       list-style: none;
-      padding-left: 0;
+      gap: 2rem;
     }
-    ul li {
-      background: #2c2c3f;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border-radius: 6px;
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
     }
-    .scrolling-numbers {
-      font-size: 1.1rem;
-      color: #ff9800;
-      animation: scroll 12s linear infinite;
-      white-space: nowrap;
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      background: var(--dark);
+      border: 1px solid var(--gray);
+      color: var(--light);
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
       overflow: hidden;
     }
-    @keyframes scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/pattern.svg') repeat;
+      opacity: 0.05;
+      z-index: 0;
     }
-    .news-feed a, .social-icons a {
-      display: block;
-      color: #8ab4f8;
-      margin: 10px 0;
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
       text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
     }
-    .news-feed a:hover, .social-icons a:hover {
-      text-decoration: underline;
-      color: #ffffff;
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
     }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Services Section */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .service-link:hover {
+      color: var(--secondary);
+      gap: 1rem;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-item {
+      color: white;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Blog Preview */
     .blog-preview {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
+
     .blog-card {
-      background-color: #2a2a40;
-      border-radius: 8px;
-      padding: 20px;
-      transition: transform 0.3s ease;
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: var(--transition);
     }
+
     .blog-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+
+    .blog-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .blog-category {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
     .blog-card h3 {
-      margin-bottom: 10px;
-      color: #26c6da;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
-    .blog-card p {
-      font-size: 0.95rem;
+
+    .blog-excerpt {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
     }
-    footer {
-      background-color: #12121c;
-      color: #aaa;
+
+    .read-more {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--dark-light);
+      padding: 5rem 2rem;
+    }
+
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .testimonial {
+      background-color: var(--dark);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
-      padding: 25px;
-      border-top: 2px solid #2a2a40;
+      display: none;
     }
-    .social-icons {
-      margin-top: 10px;
+
+    .testimonial.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
     }
-    .social-icons a {
-      display: inline-block;
-      margin: 0 10px;
-      font-size: 1.1rem;
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--primary);
+      opacity: 0.3;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      margin-bottom: 0.2rem;
+    }
+
+    .author-info p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--gray);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .slider-dot.active {
+      background-color: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .contact-form {
+      background-color: var(--dark-light);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--gray);
+      border-radius: 5px;
+      background-color: var(--dark);
+      color: var(--light);
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .form-submit:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .member-image {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .member-info {
+      padding: 1.5rem;
+    }
+
+    .member-name {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .member-position {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .member-bio {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-link {
+      color: var(--gray);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-light);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+    }
+
+    .footer-about p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h3, .footer-newsletter h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-links h3::after, .footer-newsletter h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid var(--gray);
+      border-radius: 5px 0 0 5px;
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    .newsletter-submit {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 1.2rem;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-submit:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--gray);
+      color: var(--gray);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--dark-light);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="images/logo.jpg" alt="TechBit Logo">
-    <h1>TechBit</h1>
-    <p>IT Infrastructure, Cloud, Networking, Microservices, and DevOps Solutions</p>
+    <div class="logo-container">
+      <img src="images/logo.svg" alt="TechBit Logo">
+      <div class="logo-text">
+        <h1>TechBit</h1>
+        <p>Enterprise IT Solutions</p>
+      </div>
+    </div>
+    
     <nav>
-      <a href="index.html">Home</a>
-      <a href="#services">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
     </nav>
   </header>
 
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>☁️ Cloud Infrastructure Deployment (AWS, Azure, GCP)</li>
-      <li>🖧 Network Security & Enterprise Architecture</li>
-      <li>📦 Kubernetes-based Microservices</li>
-      <li>🛠️ CI/CD Pipelines (GitHub Actions, Jenkins, ArgoCD)</li>
-      <li>🌐 Full-stack Development (MERN, Laravel, Next.js)</li>
-      <li>🔒 SOC Monitoring, IAM & SSO Implementation</li>
-    </ul>
-  </section>
-
-  <section class="section" id="blog">
-    <h2>Blog Highlights</h2>
-    <div class="scrolling-numbers">🚀 DevOps | ☁️ Cloud Trends | 🧠 AI Integrations | 🔐 Zero Trust Security | 📦 Kubernetes Best Practices</div>
-    <div class="blog-preview">
-      <div class="blog-card">
-        <h3>🛠️ Microservices with Istio</h3>
-        <p>Managing service mesh efficiently using Istio and observability tools in production clusters.</p>
-        <a href="blog.html">Read more →</a>
-      </div>
-      <div class="blog-card">
-        <h3>🔐 Zero Trust in Multi-Cloud</h3>
-        <p>Explore strategies for access management, policy enforcement, and workload identity.</p>
-        <a href="blog.html">Read more →</a>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Transform Your Digital Infrastructure</h2>
+      <p>Cutting-edge IT solutions for enterprises looking to optimize performance, security, and scalability in the cloud era.</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+        <a href="#services" class="btn btn-secondary">Our Services</a>
       </div>
     </div>
   </section>
 
-  <section class="section news-feed" id="news">
-    <h2>News Feed</h2>
-    <a href="https://techcrunch.com/" target="_blank">🚀 TechCrunch: Latest Innovations</a>
-    <a href="https://thenewstack.io/" target="_blank">📦 The New Stack: Dev & Ops Engineering</a>
-    <a href="https://www.zdnet.com/" target="_blank">🖥️ ZDNet: Cloud & Enterprise News</a>
+  <section class="section" id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <h3>Cloud Solutions</h3>
+        <p>Comprehensive cloud services including migration, architecture design, and optimization for AWS, Azure, and GCP.</p>
+        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Security & Compliance</h3>
+        <p>End-to-end security solutions including penetration testing, compliance audits, and zero-trust architecture.</p>
+        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-server"></i>
+        </div>
+        <h3>DevOps & Automation</h3>
+        <p>CI/CD pipelines, infrastructure as code, and container orchestration to streamline your development workflow.</p>
+        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h3>Network Infrastructure</h3>
+        <p>Design and implementation of secure, high-performance network architectures for enterprises.</p>
+        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3>AI & Data Solutions</h3>
+        <p>Machine learning integration, data pipelines, and business intelligence solutions tailored to your needs.</p>
+        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Custom Development</h3>
+        <p>Bespoke software solutions including web applications, mobile apps, and enterprise systems.</p>
+        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number" id="clientsCount">150+</div>
+        <div class="stat-label">Satisfied Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="projectsCount">420+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="teamCount">45+</div>
+        <div class="stat-label">Expert Team Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="uptimeCount">99.9%</div>
+        <div class="stat-label">System Uptime</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="blog-preview">
+    <h2 class="section-title">Latest Insights</h2>
+    <div class="blog-preview">
+      <div class="blog-card">
+        <div class="blog-image" style="background-image: url('images/blog1.jpg');"></div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Cloud</span>
+            <span>July 28, 2025</span>
+          </div>
+          <h3>Multi-Cloud Strategy Best Practices</h3>
+          <p class="blog-excerpt">Learn how to effectively implement and manage a multi-cloud environment to maximize flexibility and minimize vendor lock-in.</p>
+          <a href="blog.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="blog-card">
+        <div class="blog-image" style="background-image: url('images/blog2.jpg');"></div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Security</span>
+            <span>July 22, 2025</span>
+          </div>
+          <h3>Zero Trust Architecture Implementation</h3>
+          <p class="blog-excerpt">Discover the step-by-step process for transitioning your organization to a zero-trust security model.</p>
+          <a href="blog.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="blog-card">
+        <div class="blog-image" style="background-image: url('images/blog3.jpg');"></div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">DevOps</span>
+            <span>July 15, 2025</span>
+          </div>
+          <h3>GitOps: The Future of Deployment</h3>
+          <p class="blog-excerpt">Explore how GitOps is revolutionizing deployment workflows and how you can implement it in your organization.</p>
+          <a href="blog.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="section">
+      <h2 class="section-title">Client Testimonials</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial active">
+          <p class="testimonial-text">TechBit transformed our cloud infrastructure, reducing costs by 40% while improving performance and reliability. Their team was professional, knowledgeable, and delivered beyond our expectations.</p>
+          <div class="testimonial-author">
+            <img src="images/client1.jpg" alt="Sarah Johnson" class="author-avatar">
+            <div class="author-info">
+              <h4>Sarah Johnson</h4>
+              <p>CTO, FinTech Solutions</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">The security audit conducted by TechBit identified critical vulnerabilities we had missed. Their remediation plan was comprehensive and implemented with minimal disruption to our operations.</p>
+          <div class="testimonial-author">
+            <img src="images/client2.jpg" alt="Michael Chen" class="author-avatar">
+            <div class="author-info">
+              <h4>Michael Chen</h4>
+              <p>Director of IT, HealthCare Plus</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">Working with TechBit on our DevOps transformation has been a game-changer. Deployment times reduced from hours to minutes, and our team's productivity has increased significantly.</p>
+          <div class="testimonial-author">
+            <img src="images/client3.jpg" alt="David Wilson" class="author-avatar">
+            <div class="author-info">
+              <h4>David Wilson</h4>
+              <p>VP Engineering, RetailTech</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="slider-controls">
+          <div class="slider-dot active" data-slide="0"></div>
+          <div class="slider-dot" data-slide="1"></div>
+          <div class="slider-dot" data-slide="2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <h2 class="section-title">Our Leadership Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team1.jpg');"></div>
+        <div class="member-info">
+          <h3 class="member-name">Alex Rodriguez</h3>
+          <p class="member-position">CEO & Founder</p>
+          <p class="member-bio">20+ years in enterprise IT infrastructure and digital transformation.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team2.jpg');"></div>
+        <div class="member-info">
+          <h3 class="member-name">Priya Patel</h3>
+          <p class="member-position">CTO</p>
+          <p class="member-bio">Cloud architecture expert with deep expertise in AWS and Kubernetes.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team3.jpg');"></div>
+        <div class="member-info">
+          <h3 class="member-name">James Wilson</h3>
+          <p class="member-position">Director of Security</p>
+          <p class="member-bio">Cybersecurity specialist with focus on zero-trust and compliance frameworks.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team4.jpg');"></div>
+        <div class="member-info">
+          <h3 class="member-name">Maria Garcia</h3>
+          <p class="member-position">Head of DevOps</p>
+          <p class="member-bio">CI/CD and automation expert with passion for infrastructure as code.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:info@techbit.net.bd">info@techbit.net.bd</a></p>
-    <p>Phone: <a href="tel:+8801700000000">+880 1700-000000</a></p>
-    <div class="social-icons">
-      <a href="https://facebook.com/techbit" target="_blank">🌐 Facebook</a>
-      <a href="https://linkedin.com/company/techbit" target="_blank">💼 LinkedIn</a>
-      <a href="https://github.com/techbit" target="_blank">🐙 GitHub</a>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h3>Our Office</h3>
+            <p>123 Tech Park, Silicon Valley<br>San Francisco, CA 94107</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <h3>Phone</h3>
+            <p>+1 (555) 123-4567<br>Mon-Fri, 9am-5pm PST</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h3>Email</h3>
+            <p>info@techbit.com<br>support@techbit.com</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h3>Hours</h3>
+            <p>Monday - Friday: 9am - 6pm<br>Weekends: Closed</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 TechBit. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="images/logo-white.svg" alt="TechBit Logo">
+        </div>
+        <p>TechBit provides cutting-edge IT infrastructure, cloud solutions, and digital transformation services for enterprises worldwide.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Cloud Solutions</a></li>
+          <li><a href="#">Security & Compliance</a></li>
+          <li><a href="#">DevOps & Automation</a></li>
+          <li><a href="#">Network Infrastructure</a></li>
+          <li><a href="#">AI & Data Solutions</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for the latest tech insights and updates.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" class="newsletter-input" required>
+          <button type="submit" class="newsletter-submit">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        <p>We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 TechBit. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
   </footer>
 
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      
+      // Update icon
+      themeToggle.innerHTML = newTheme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
+      
+      // Save preference to localStorage
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+      themeToggle.innerHTML = savedTheme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
+    }
+    
+    // Testimonial Slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+      testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      testimonials[index].classList.add('active');
+      dots[index].classList.add('active');
+      currentSlide = index;
+    }
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
+    });
+    
+    // Auto slide change
+    setInterval(() => {
+      let nextSlide = (currentSlide + 1) % testimonials.length;
+      showSlide(nextSlide);
+    }, 5000);
+    
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Here you would typically send the form data to a server
+      alert('Thank you for your message! We will get back to you soon.');
+      contactForm.reset();
+    });
+    
+    // Animate stats counters
+    function animateCounter(element, target, duration = 2000) {
+      const start = 0;
+      const increment = target / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          clearInterval(timer);
+          current = target;
+        }
+        element.textContent = Math.floor(current) + (element.id === 'uptimeCount' ? '%' : '+');
+      }, 16);
+    }
+    
+    // Start counters when they come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(document.getElementById('clientsCount'), 150);
+          animateCounter(document.getElementById('projectsCount'), 420);
+          animateCounter(document.getElementById('teamCount'), 45);
+          animateCounter(document.getElementById('uptimeCount'), 99.9);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observer.observe(document.querySelector('.stats'));
+  </script>
 </body>
 </html>
