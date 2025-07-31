@@ -1,69 +1,804 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TechBit Blog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechBit | Blog - IT Insights & Trends</title>
+  <meta name="description" content="Latest articles on cloud computing, DevOps, cybersecurity, and IT infrastructure from TechBit experts">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success: #10b981;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    [data-theme="light"] {
+      --dark: #f8fafc;
+      --dark-light: #e2e8f0;
+      --light: #0f172a;
+      --gray: #94a3b8;
+      --gray-light: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #1f1f1f;
-      color: #e0e0e0;
+      padding: 0;
     }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    /* Header & Navigation */
     header {
-      text-align: center;
-      background-color: #121212;
-      padding: 20px;
+      background-color: var(--dark-light);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a {
-      margin: 0 15px;
-      color: #00bcd4;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-container img {
+      height: 50px;
+      transition: var(--transition);
+    }
+
+    .logo-text h1 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .logo-text p {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
     }
-    .section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
     }
-    article {
-      background-color: #2c2c2c;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-radius: 8px;
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
-    article h3 {
-      color: #00bcd4;
+
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      background: var(--dark);
+      border: 1px solid var(--gray);
+      color: var(--light);
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+    }
+
+    /* Blog Content */
+    .blog-header {
+      background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .blog-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-header p {
+      color: var(--gray);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+    }
+
+    @media (max-width: 992px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Main Content */
+    .article-card {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      transition: var(--transition);
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-image {
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .article-content {
+      padding: 2rem;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .article-category {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-excerpt {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .read-more {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .read-more:hover {
+      color: var(--secondary);
+      gap: 1rem;
+    }
+
+    .article-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background-color: var(--dark);
+      color: var(--gray);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .tag:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .sidebar-widget {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .widget-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .widget-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .search-form {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid var(--gray);
+      border-radius: 5px 0 0 5px;
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    .search-submit {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 1.2rem;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .search-submit:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .categories-list, .popular-posts {
+      list-style: none;
+    }
+
+    .categories-list li, .popular-posts li {
+      margin-bottom: 0.8rem;
+    }
+
+    .categories-list a, .popular-posts a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    .categories-list a:hover, .popular-posts a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .categories-list a::before, .popular-posts a::before {
+      content: '•';
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .popular-post {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .popular-post-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .popular-post-title {
+      font-size: 0.9rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 3rem;
+    }
+
+    .page-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: var(--dark-light);
+      color: var(--light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .page-link:hover, .page-link.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-light);
+      padding: 4rem 2rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+    }
+
+    .footer-about p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-links h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--gray);
+      color: var(--gray);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--dark-light);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>TechBit Blog</h1>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/logo.svg" alt="TechBit Logo">
+      </a>
+      <div class="logo-text">
+        <h1>TechBit</h1>
+        <p>Enterprise IT Solutions</p>
+      </div>
+    </div>
+    
     <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#news">News</a>
-      <a href="index.html#contact">Contact</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="index.html#team">Team</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
     </nav>
   </header>
 
-  <section class="section">
-    <article>
-      <h3>🛠️ Building Resilient Microservices with Kubernetes</h3>
-      <p>Learn how we design, scale, and manage microservice architecture with tools like Istio, Prometheus, and Helm.</p>
-    </article>
-    <article>
-      <h3>🔐 Implementing Zero Trust Security in Cloud Infrastructure</h3>
-      <p>A practical guide to apply Zero Trust principles using tools like Vault, Cilium, and Keycloak.</p>
-    </article>
-    <article>
-      <h3>🚀 Automating CI/CD with GitHub Actions and ArgoCD</h3>
-      <p>How TechBit enables fast, reliable software delivery pipelines using GitOps practices.</p>
-    </article>
+  <section class="blog-header">
+    <h1>TechBit Insights</h1>
+    <p>Latest articles on cloud computing, DevOps, cybersecurity, and IT infrastructure from our team of experts.</p>
   </section>
 
+  <div class="blog-container">
+    <main>
+      <article class="article-card">
+        <div class="article-image" style="background-image: url('images/blog1.jpg');"></div>
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-category">Cloud Architecture</span>
+            <span><i class="far fa-calendar-alt"></i> July 28, 2025</span>
+            <span><i class="far fa-clock"></i> 8 min read</span>
+          </div>
+          <h2 class="article-title">Multi-Cloud Strategy: Best Practices for Enterprise Deployment</h2>
+          <p class="article-excerpt">In today's digital landscape, enterprises are increasingly adopting multi-cloud strategies to avoid vendor lock-in, optimize costs, and enhance resilience. This comprehensive guide explores the key considerations, architectural patterns, and operational best practices for implementing a successful multi-cloud environment...</p>
+          <a href="article.html" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+          <div class="article-tags">
+            <a href="#" class="tag">#cloud</a>
+            <a href="#" class="tag">#aws</a>
+            <a href="#" class="tag">#azure</a>
+            <a href="#" class="tag">#gcp</a>
+            <a href="#" class="tag">#architecture</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="article-image" style="background-image: url('images/blog2.jpg');"></div>
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-category">Security</span>
+            <span><i class="far fa-calendar-alt"></i> July 22, 2025</span>
+            <span><i class="far fa-clock"></i> 12 min read</span>
+          </div>
+          <h2 class="article-title">Implementing Zero Trust Architecture in Legacy Environments</h2>
+          <p class="article-excerpt">Transitioning to a zero-trust security model presents unique challenges for organizations with legacy infrastructure. This article outlines a phased approach to implementing zero-trust principles, including identity verification, micro-segmentation, and continuous monitoring, while maintaining compatibility with existing systems...</p>
+          <a href="article.html" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+          <div class="article-tags">
+            <a href="#" class="tag">#security</a>
+            <a href="#" class="tag">#zerotrust</a>
+            <a href="#" class="tag">#iam</a>
+            <a href="#" class="tag">#compliance</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="article-image" style="background-image: url('images/blog3.jpg');"></div>
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-category">DevOps</span>
+            <span><i class="far fa-calendar-alt"></i> July 15, 2025</span>
+            <span><i class="far fa-clock"></i> 10 min read</span>
+          </div>
+          <h2 class="article-title">GitOps: Revolutionizing Deployment Workflows in 2025</h2>
+          <p class="article-excerpt">GitOps has emerged as the dominant paradigm for cloud-native deployment automation. We examine the latest tools and patterns in the GitOps ecosystem, including ArgoCD advancements, policy-as-code implementations, and strategies for managing complex multi-cluster environments with Git as the single source of truth...</p>
+          <a href="article.html" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+          <div class="article-tags">
+            <a href="#" class="tag">#devops</a>
+            <a href="#" class="tag">#gitops</a>
+            <a href="#" class="tag">#kubernetes</a>
+            <a href="#" class="tag">#automation</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="article-image" style="background-image: url('images/blog4.jpg');"></div>
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-category">AI/ML</span>
+            <span><i class="far fa-calendar-alt"></i> July 8, 2025</span>
+            <span><i class="far fa-clock"></i> 15 min read</span>
+          </div>
+          <h2 class="article-title">MLOps: Building Scalable Machine Learning Pipelines</h2>
+          <p class="article-excerpt">As machine learning models become integral to business operations, the need for robust MLOps practices grows. This guide covers everything from data versioning and model training to deployment monitoring and drift detection, with practical examples using Kubeflow, MLflow, and TFX...</p>
+          <a href="article.html" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+          <div class="article-tags">
+            <a href="#" class="tag">#ai</a>
+            <a href="#" class="tag">#mlops</a>
+            <a href="#" class="tag">#kubeflow</a>
+            <a href="#" class="tag">#datascience</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="pagination">
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">4</a>
+        <a href="#" class="page-link">5</a>
+        <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Search</h3>
+        <form class="search-form">
+          <input type="text" placeholder="Search articles..." class="search-input">
+          <button type="submit" class="search-submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Categories</h3>
+        <ul class="categories-list">
+          <li><a href="#">Cloud Computing (24)</a></li>
+          <li><a href="#">DevOps (18)</a></li>
+          <li><a href="#">Security (15)</a></li>
+          <li><a href="#">AI/ML (12)</a></li>
+          <li><a href="#">Networking (9)</a></li>
+          <li><a href="#">Data Engineering (7)</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Popular Posts</h3>
+        <ul class="popular-posts">
+          <li>
+            <div class="popular-post">
+              <div class="popular-post-image" style="background-image: url('images/blog-thumb1.jpg');"></div>
+              <div class="popular-post-title">Kubernetes Security Best Practices</div>
+            </div>
+          </li>
+          <li>
+            <div class="popular-post">
+              <div class="popular-post-image" style="background-image: url('images/blog-thumb2.jpg');"></div>
+              <div class="popular-post-title">AWS Cost Optimization Strategies</div>
+            </div>
+          </li>
+          <li>
+            <div class="popular-post">
+              <div class="popular-post-image" style="background-image: url('images/blog-thumb3.jpg');"></div>
+              <div class="popular-post-title">Terraform Modules for Enterprise</div>
+            </div>
+          </li>
+          <li>
+            <div class="popular-post">
+              <div class="popular-post-image" style="background-image: url('images/blog-thumb4.jpg');"></div>
+              <div class="popular-post-title">CI/CD Pipeline Security</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Tags</h3>
+        <div class="tag-cloud">
+          <a href="#" class="tag">#aws</a>
+          <a href="#" class="tag">#azure</a>
+          <a href="#" class="tag">#gcp</a>
+          <a href="#" class="tag">#kubernetes</a>
+          <a href="#" class="tag">#docker</a>
+          <a href="#" class="tag">#terraform</a>
+          <a href="#" class="tag">#ansible</a>
+          <a href="#" class="tag">#jenkins</a>
+          <a href="#" class="tag">#gitops</a>
+          <a href="#" class="tag">#security</a>
+          <a href="#" class="tag">#devsecops</a>
+          <a href="#" class="tag">#mlops</a>
+        </div>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Newsletter</h3>
+        <p>Subscribe to get the latest tech insights delivered to your inbox.</p>
+        <form class="search-form">
+          <input type="email" placeholder="Your email" class="search-input">
+          <button type="submit" class="search-submit">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="images/logo-white.svg" alt="TechBit Logo">
+        </div>
+        <p>TechBit provides cutting-edge IT infrastructure, cloud solutions, and digital transformation services for enterprises worldwide.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Cloud Solutions</a></li>
+          <li><a href="#">Security & Compliance</a></li>
+          <li><a href="#">DevOps & Automation</a></li>
+          <li><a href="#">Network Infrastructure</a></li>
+          <li><a href="#">AI & Data Solutions</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-newsletter">
+        <h3>Contact</h3>
+        <p>123 Tech Park, Silicon Valley<br>San Francisco, CA 94107</p>
+        <p>Email: info@techbit.com<br>Phone: +1 (555) 123-4567</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 TechBit. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      
+      // Update icon
+      themeToggle.innerHTML = newTheme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
+      
+      // Save preference to localStorage
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+      themeToggle.innerHTML = savedTheme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
+    }
+  </script>
 </body>
 </html>
