@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechBit Team | Enterprise IT Experts</title>
+  <meta name="description" content="Meet the expert team behind TechBit's IT infrastructure, cloud, and security solutions">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success: #10b981;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    [data-theme="light"] {
+      --dark: #f8fafc;
+      --dark-light: #e2e8f0;
+      --light: #0f172a;
+      --gray: #94a3b8;
+      --gray-light: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--dark-light);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-container img {
+      height: 50px;
+      transition: var(--transition);
+    }
+
+    .logo-text h1 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .logo-text p {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      background: var(--dark);
+      border: 1px solid var(--gray);
+      color: var(--light);
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+    }
+
+    /* Team Hero */
+    .team-hero {
+      background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/pattern.svg') repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+    .team-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .team-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .team-hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    /* Team Section */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .team-intro {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+
+    .team-intro p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    .team-filter {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      background-color: var(--dark-light);
+      color: var(--light);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background-color: var(--dark-light);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .member-image {
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .member-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 1.5rem;
+      color: white;
+    }
+
+    .member-info {
+      padding: 1.5rem;
+    }
+
+    .member-name {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .member-position {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .member-bio {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .member-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-tag {
+      background-color: var(--dark);
+      color: var(--gray);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .skill-tag:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      color: var(--gray);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      color: var(--primary);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 4rem 2rem;
+      margin-top: 5rem;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      color: white;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section p {
+      color: var(--gray);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      margin-left: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-light);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+    }
+
+    .footer-about p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h3, .footer-newsletter h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-links h3::after, .footer-newsletter h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid var(--gray);
+      border-radius: 5px 0 0 5px;
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    .newsletter-submit {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 1.2rem;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-submit:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--gray);
+      color: var(--gray);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--dark-light);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .team-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .team-hero h1 {
+        font-size: 2rem;
+      }
+
+      .btn-secondary {
+        margin-left: 0;
+        margin-top: 1rem;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/logo.jpg" alt="TechBit Logo">
+      </a>
+      <div class="logo-text">
+        <h1>TechBit</h1>
+        <p>Enterprise IT Solutions</p>
+      </div>
+    </div>
+    
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <section class="team-hero">
+    <div class="team-hero-content">
+      <h1>Meet Our Team</h1>
+      <p>Industry experts dedicated to delivering exceptional IT solutions and digital transformation services</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Leadership Team</h2>
+    <div class="team-intro">
+      <p>Our leadership team brings decades of combined experience in enterprise IT, cloud architecture, and digital transformation, guiding our company vision and client success.</p>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team1.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Alex Rodriguez</h3>
+            <span class="member-position">CEO & Founder</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">20+ years in enterprise IT infrastructure and digital transformation. Former CTO at Fortune 500 company.</p>
+          <div class="member-skills">
+            <span class="skill-tag">Cloud Architecture</span>
+            <span class="skill-tag">Digital Strategy</span>
+            <span class="skill-tag">Leadership</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team2.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Priya Patel</h3>
+            <span class="member-position">Chief Technology Officer</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Cloud architecture expert with deep expertise in AWS and Kubernetes. Speaker at major tech conferences.</p>
+          <div class="member-skills">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">DevOps</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member">
+        <div class="member-image" style="background-image: url('images/team3.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">James Wilson</h3>
+            <span class="member-position">Director of Security</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Cybersecurity specialist with focus on zero-trust and compliance frameworks. CISSP certified.</p>
+          <div class="member-skills">
+            <span class="skill-tag">Cybersecurity</span>
+            <span class="skill-tag">Zero Trust</span>
+            <span class="skill-tag">Compliance</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Technical Experts</h2>
+    <div class="team-intro">
+      <p>Our technical team consists of certified professionals with deep expertise across all aspects of modern IT infrastructure and software development.</p>
+    </div>
+    
+    <div class="team-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="cloud">Cloud</button>
+      <button class="filter-btn" data-filter="devops">DevOps</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+      <button class="filter-btn" data-filter="development">Development</button>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-member" data-category="cloud">
+        <div class="member-image" style="background-image: url('images/team4.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Maria Garcia</h3>
+            <span class="member-position">Cloud Architect</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Specializes in multi-cloud architectures and migrations. AWS Solutions Architect Professional.</p>
+          <div class="member-skills">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">Terraform</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member" data-category="devops">
+        <div class="member-image" style="background-image: url('images/team5.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">David Kim</h3>
+            <span class="member-position">DevOps Engineer</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">CI/CD pipeline specialist with expertise in GitHub Actions and ArgoCD.</p>
+          <div class="member-skills">
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">GitOps</span>
+            <span class="skill-tag">Automation</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member" data-category="security">
+        <div class="member-image" style="background-image: url('images/team6.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Sarah Johnson</h3>
+            <span class="member-position">Security Engineer</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Penetration tester and security auditor with OSCP certification.</p>
+          <div class="member-skills">
+            <span class="skill-tag">Pen Testing</span>
+            <span class="skill-tag">SOC</span>
+            <span class="skill-tag">IAM</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member" data-category="development">
+        <div class="member-image" style="background-image: url('images/team7.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Michael Chen</h3>
+            <span class="member-position">Senior Developer</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Full-stack developer with expertise in React, Node.js, and microservices.</p>
+          <div class="member-skills">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Microservices</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member" data-category="cloud">
+        <div class="member-image" style="background-image: url('images/team8.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Emma Wilson</h3>
+            <span class="member-position">Cloud Engineer</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Google Cloud Certified Professional with expertise in data solutions.</p>
+          <div class="member-skills">
+            <span class="skill-tag">GCP</span>
+            <span class="skill-tag">BigQuery</span>
+            <span class="skill-tag">Dataflow</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team-member" data-category="devops">
+        <div class="member-image" style="background-image: url('images/team9.jpg');">
+          <div class="member-overlay">
+            <h3 class="member-name">Daniel Brown</h3>
+            <span class="member-position">Site Reliability Engineer</span>
+          </div>
+        </div>
+        <div class="member-info">
+          <p class="member-bio">Ensuring high availability and performance of critical systems.</p>
+          <div class="member-skills">
+            <span class="skill-tag">Monitoring</span>
+            <span class="skill-tag">Alerting</span>
+            <span class="skill-tag">Incident Response</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">45+</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Join Our Growing Team</h2>
+      <p>We're always looking for talented individuals to join our team of IT experts. Check out our current openings.</p>
+      <a href="contact.html" class="btn btn-primary">View Open Positions</a>
+      <a href="contact.html" class="btn btn-secondary">Contact Recruiting</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="images/logo.jpg" alt="TechBit Logo">
+        </div>
+        <p>TechBit provides cutting-edge IT infrastructure, cloud solutions, and digital transformation services for enterprises worldwide.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Cloud Solutions</a></li>
+          <li><a href="#">Security & Compliance</a></li>
+          <li><a href="#">DevOps & Automation</a></li>
+          <li><a href="#">Network Infrastructure</a></li>
+          <li><a href="#">AI & Data Solutions</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for the latest tech insights and updates.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" class="newsletter-input" required>
+          <button type="submit" class="newsletter-submit">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        <p>We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 TechBit. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      
+      // Update icon
+      themeToggle.innerHTML = newTheme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
+      
+      // Save preference to localStorage
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+      themeToggle.innerHTML = savedTheme === 'dark' 
+        ? '<i class="fas fa-moon"></i>' 
+        : '<i class="fas fa-sun"></i>';
+    }
+    
+    // Team Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const teamMembers = document.querySelectorAll('.team-member[data-category]');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        // Filter team members
+        teamMembers.forEach(member => {
+          if (filter === 'all' || member.dataset.category === filter) {
+            member.style.display = 'block';
+          } else {
+            member.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

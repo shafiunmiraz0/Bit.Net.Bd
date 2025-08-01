@@ -785,7 +785,7 @@
 <body>
   <header>
     <div class="logo-container">
-      <img src="images/logo.svg" alt="TechBit Logo">
+      <img src="images/logo.jpg" alt="TechBit Logo">
       <div class="logo-text">
         <h1>TechBit</h1>
         <p>Enterprise IT Solutions</p>
@@ -795,10 +795,10 @@
     <nav>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="service.html">Services</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
@@ -882,19 +882,19 @@
   <section class="stats">
     <div class="stats-container">
       <div class="stat-item">
-        <div class="stat-number" id="clientsCount">150+</div>
+        <div class="stat-number" id="clientsCount">5+</div>
         <div class="stat-label">Satisfied Clients</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number" id="projectsCount">420+</div>
+        <div class="stat-number" id="projectsCount">7+</div>
         <div class="stat-label">Projects Completed</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number" id="teamCount">45+</div>
+        <div class="stat-number" id="teamCount">2+</div>
         <div class="stat-label">Expert Team Members</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number" id="uptimeCount">99.9%</div>
+        <div class="stat-number" id="uptimeCount">75.9%</div>
         <div class="stat-label">System Uptime</div>
       </div>
     </div>
@@ -1128,7 +1128,7 @@
     <div class="footer-container">
       <div class="footer-about">
         <div class="footer-logo">
-          <img src="images/logo-white.svg" alt="TechBit Logo">
+          <img src="images/logo.jpg" alt="TechBit Logo">
         </div>
         <p>TechBit provides cutting-edge IT infrastructure, cloud solutions, and digital transformation services for enterprises worldwide.</p>
         <div class="social-links">
@@ -1279,10 +1279,10 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateCounter(document.getElementById('clientsCount'), 150);
-          animateCounter(document.getElementById('projectsCount'), 420);
-          animateCounter(document.getElementById('teamCount'), 45);
-          animateCounter(document.getElementById('uptimeCount'), 99.9);
+          animateCounter(document.getElementById('clientsCount'), 5);
+          animateCounter(document.getElementById('projectsCount'), 7);
+          animateCounter(document.getElementById('teamCount'), 2);
+          animateCounter(document.getElementById('uptimeCount'), 75.9);
           observer.unobserve(entry.target);
         }
       });
